@@ -1,0 +1,7 @@
+Flask
+Werkzeug
+PyMuPDF
+python-dotenv
+google-genai
+scikit-learn
+gunicorn
