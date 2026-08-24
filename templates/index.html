@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CVanta AI</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <!-- HEADER -->
+        <header>
+            <div class="logo">
+                📄 CVanta AI
+            </div>
+        </header>
+
+
+        <!-- HERO SECTION -->
+        <section class="hero">
+
+            <div class="badge">
+                ✨ Smart • Fast • AI Powered
+            </div>
+
+            <h1>
+                AI Powered
+                <span>CVanta AI</span>
+            </h1>
+
+            <p class="description">
+                Upload your resume and let AI discover your
+                best matching career field.
+            </p>
+
+        </section>
+
+
+        <!-- UPLOAD CARD -->
+        <div class="upload-card">
+
+            <form
+                action="/upload"
+                method="POST"
+                enctype="multipart/form-data"
+            >
+
+                <div class="upload-box">
+
+                    <h2>📄 Upload Your Resume</h2>
+
+                    <p>
+                        Upload your PDF resume and let AI analyze it.
+                    </p>
+
+                    <input
+                        type="file"
+                        name="resume"
+                        accept=".pdf"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- ANALYZE BUTTON -->
+                <button type="submit">
+                    ✨ Analyze My Resume
+                </button>
+
+            </form>
+
+
+            <!-- ============================= -->
+            <!-- NEW: AI RESUME BUILDER BUTTON -->
+            <!-- ============================= -->
+
+            <div class="builder-link-box">
+
+                <p>
+                    Don't have a resume yet?
+                </p>
+
+                <a
+                    href="/resume-builder"
+                    class="builder-link-btn"
+                >
+                    📝 Create Resume with AI
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <!-- FEATURES -->
+        <div class="features">
+
+            <div class="feature">
+                <h3>🎯 Career Field</h3>
+                <p>
+                    AI predicts your best matching job field.
+                </p>
+            </div>
+
+            <div class="feature">
+                <h3>📊 Skill Analysis</h3>
+                <p>
+                    Detect important skills from your resume.
+                </p>
+            </div>
+
+            <div class="feature">
+                <h3>💡 Career Suggestions</h3>
+                <p>
+                    Discover missing skills and improvements.
+                </p>
+            </div>
+
+            <div class="feature">
+                <h3>🤖 AI Analysis</h3>
+                <p>
+                    Gemini analyzes your complete resume.
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,4243 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>CVanta CVanta AI Resume Builder</title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='style.css') }}"
+    >
+</head>
+
+
+<body class="builder-page">
+
+<div class="builder-container">
+
+
+    <!-- =====================================================
+         NAVBAR
+    ====================================================== -->
+
+    <nav class="builder-navbar">
+
+        <div class="builder-logo">
+            📄 CVanta CVanta AI Resume Builder
+        </div>
+
+        <a
+            href="/"
+            class="back-home"
+        >
+            ← Back to CVanta AI
+        </a>
+
+    </nav>
+
+
+
+    <!-- =====================================================
+         HERO
+    ====================================================== -->
+
+    <section class="builder-hero">
+
+        <div class="builder-badge">
+            ✨ Build • Improve • Download
+        </div>
+
+        <h1>
+            Create Your
+            <span>Professional Resume</span>
+        </h1>
+
+        <p>
+            Build a clean, professional and ATS-friendly resume
+            with AI-powered assistance.
+        </p>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         RESUME FORM
+    ====================================================== -->
+
+    <form
+        class="resume-form"
+        id="resumeForm"
+    >
+
+
+        <!-- =================================================
+             PERSONAL DETAILS
+        ================================================== -->
+
+        <div class="builder-card">
+
+            <h2>👤 Personal Details</h2>
+
+            <div class="form-grid">
+
+                <div class="form-group">
+
+                    <label>
+                        Full Name
+                    </label>
+
+                    <input
+                        type="text"
+                        id="fullName"
+                        placeholder="Enter your full name"
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>
+                        Email
+                    </label>
+
+                    <input
+                        type="email"
+                        id="email"
+                        placeholder="example@email.com"
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>
+                        Phone Number
+                    </label>
+
+                    <input
+                        type="text"
+                        id="phone"
+                        placeholder="+91 XXXXX XXXXX"
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>
+                        Location
+                    </label>
+
+                    <input
+                        type="text"
+                        id="location"
+                        placeholder="City, State"
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>
+                        LinkedIn
+                    </label>
+
+                    <input
+                        type="text"
+                        id="linkedin"
+                        placeholder="linkedin.com/in/your-profile"
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>
+                        GitHub
+                    </label>
+
+                    <input
+                        type="text"
+                        id="github"
+                        placeholder="github.com/username"
+                    >
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =================================================
+             PROFESSIONAL SUMMARY
+        ================================================== -->
+
+        <div class="builder-card">
+
+            <h2>📝 Professional Summary</h2>
+
+            <textarea
+                id="summary"
+                rows="5"
+                placeholder="Write a short professional summary..."
+            ></textarea>
+
+            <button
+                type="button"
+                class="ai-builder-btn"
+                id="generateSummaryBtn"
+            >
+                ✨ Generate Summary with AI
+            </button>
+
+        </div>
+
+
+
+        <!-- =================================================
+             MULTIPLE EDUCATION
+        ================================================== -->
+
+        <div class="builder-card">
+
+            <h2>🎓 Education</h2>
+
+
+            <div id="educationContainer">
+
+
+                <!-- EDUCATION 1 -->
+
+                <div class="education-item">
+
+
+                    <div class="entry-header">
+
+                        <h3 class="education-number">
+                            Education 1
+                        </h3>
+
+
+                        <button
+                            type="button"
+                            class="remove-entry-btn remove-education-btn"
+                            style="display:none;"
+                        >
+                            ✕ Remove
+                        </button>
+
+                    </div>
+
+
+                    <div class="form-grid">
+
+
+                        <div class="form-group">
+
+                            <label>
+                                Degree / Course
+                            </label>
+
+                            <input
+                                type="text"
+                                class="education-degree"
+                                placeholder="B.Tech CSE / Diploma AIML"
+                            >
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label>
+                                College / University
+                            </label>
+
+                            <input
+                                type="text"
+                                class="education-college"
+                                placeholder="Institute name"
+                            >
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label>
+                                Start Year
+                            </label>
+
+                            <input
+                                type="text"
+                                class="education-start-year"
+                                placeholder="2023"
+                            >
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label>
+                                End Year
+                            </label>
+
+                            <input
+                                type="text"
+                                class="education-end-year"
+                                placeholder="2026"
+                            >
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <button
+                type="button"
+                class="add-more-btn"
+                id="addEducationBtn"
+            >
+                ＋ Add Another Education
+            </button>
+
+        </div>
+
+
+
+        <!-- =================================================
+             SKILLS
+        ================================================== -->
+
+        <div class="builder-card">
+
+            <h2>🧠 Skills</h2>
+
+            <textarea
+                id="skills"
+                rows="4"
+                placeholder="Python, SQL, Flask, Machine Learning, Git..."
+            ></textarea>
+
+            <button
+                type="button"
+                class="ai-builder-btn"
+                id="recommendSkillsBtn"
+            >
+                ✨ Recommend Skills with AI
+            </button>
+
+            <div
+                id="skillRecommendations"
+                class="ai-result-box"
+                style="display:none;"
+            ></div>
+
+        </div>
+
+
+
+        <!-- =================================================
+             MULTIPLE EXPERIENCE
+        ================================================== -->
+
+        <div class="builder-card">
+
+            <h2>💼 Experience</h2>
+
+
+            <div id="experienceContainer">
+
+
+                <div class="experience-item">
+
+
+                    <div class="entry-header">
+
+                        <h3 class="experience-number">
+                            Experience 1
+                        </h3>
+
+
+                        <button
+                            type="button"
+                            class="remove-entry-btn remove-experience-btn"
+                            style="display:none;"
+                        >
+                            ✕ Remove
+                        </button>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Job / Internship Title
+                        </label>
+
+                        <input
+                            type="text"
+                            class="experience-title"
+                            placeholder="Data Analyst Intern"
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Company
+                        </label>
+
+                        <input
+                            type="text"
+                            class="experience-company"
+                            placeholder="Company name"
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Description
+                        </label>
+
+                        <textarea
+                            class="experience-description"
+                            rows="5"
+                            placeholder="Describe responsibilities and achievements..."
+                        ></textarea>
+
+                    </div>
+
+
+                    <button
+                        type="button"
+                        class="ai-builder-btn improve-experience-btn"
+                    >
+                        ✨ Improve Experience with AI
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <button
+                type="button"
+                class="add-more-btn"
+                id="addExperienceBtn"
+            >
+                ＋ Add Another Experience
+            </button>
+
+        </div>
+
+
+
+        <!-- =================================================
+             MULTIPLE PROJECTS
+        ================================================== -->
+
+        <div class="builder-card">
+
+            <h2>🚀 Projects</h2>
+
+
+            <div id="projectsContainer">
+
+
+                <div class="project-item">
+
+
+                    <div class="entry-header">
+
+                        <h3 class="project-number">
+                            Project 1
+                        </h3>
+
+
+                        <button
+                            type="button"
+                            class="remove-entry-btn remove-project-btn"
+                            style="display:none;"
+                        >
+                            ✕ Remove
+                        </button>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Project Name
+                        </label>
+
+                        <input
+                            type="text"
+                            class="project-name"
+                            placeholder="CVanta AI"
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Project Description
+                        </label>
+
+                        <textarea
+                            class="project-description"
+                            rows="5"
+                            placeholder="Explain what you built, technologies used and your contribution..."
+                        ></textarea>
+
+                    </div>
+
+
+                    <button
+                        type="button"
+                        class="ai-builder-btn improve-project-btn"
+                    >
+                        ✨ Improve Project with AI
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <button
+                type="button"
+                class="add-more-btn"
+                id="addProjectBtn"
+            >
+                ＋ Add Another Project
+            </button>
+
+        </div>
+
+
+
+        <!-- =================================================
+             CERTIFICATIONS
+        ================================================== -->
+
+        <div class="builder-card">
+
+            <h2>🏆 Certifications</h2>
+
+            <textarea
+                id="certifications"
+                rows="4"
+                placeholder="Microsoft, Google Cloud, AWS..."
+            ></textarea>
+
+        </div>
+
+
+
+        <!-- =================================================
+             ONE PAGE RESUME FIT
+        ================================================== -->
+
+        <div
+            class="resume-fit-card"
+            id="resumeFitCard"
+        >
+
+            <div class="resume-fit-header">
+
+                <div>
+
+                    <h3>
+                        📏 Resume Fit
+                    </h3>
+
+                    <p id="resumeFitMessage">
+                        Start filling your resume to check its length.
+                    </p>
+
+                </div>
+
+
+                <strong id="resumeFitPercentage">
+                    0%
+                </strong>
+
+            </div>
+
+
+            <div class="resume-fit-progress">
+
+                <div
+                    class="resume-fit-progress-bar"
+                    id="resumeFitProgressBar"
+                ></div>
+
+            </div>
+
+
+            <p
+                class="resume-fit-details"
+                id="resumeFitDetails"
+            >
+                Estimated one-page usage will appear here.
+            </p>
+
+        </div>
+
+
+
+        <!-- =================================================
+             ACTION BUTTONS
+        ================================================== -->
+
+        <div class="builder-actions">
+
+
+            <button
+                type="button"
+                class="preview-btn"
+                id="previewResumeBtn"
+            >
+                👁 Preview Resume
+            </button>
+
+
+            <button
+                type="button"
+                class="generate-resume-btn"
+                id="generateResumeBtn"
+            >
+                📄 Generate Resume PDF
+            </button>
+
+
+            <button
+                type="button"
+                class="ai-builder-btn"
+                id="checkReadinessBtn"
+            >
+                📊 Check Resume Readiness
+            </button>
+
+
+            <button
+                type="button"
+                class="ai-builder-btn"
+                id="generateInterviewBtn"
+            >
+                🎤 Generate Interview Questions
+            </button>
+
+
+            <button
+                type="button"
+                class="ai-builder-btn"
+                id="generateRoadmapBtn"
+            >
+                🗺️ Generate Career Roadmap
+            </button>
+
+
+            <button
+                type="button"
+                class="ai-builder-btn"
+                id="detectGapsBtn"
+            >
+                🔎 Detect Resume Gaps
+            </button>
+
+
+            <button
+                type="button"
+                class="ai-builder-btn"
+                id="checkConsistencyBtn"
+            >
+                ⚠️ Check Resume Consistency
+            </button>
+
+
+            <button
+                type="button"
+                class="ai-builder-btn"
+                id="verifySkillsBtn"
+            >
+                🧠 Verify Skill Evidence
+            </button>
+
+        </div>
+
+
+
+        <!-- =================================================
+             AI RESULTS
+        ================================================== -->
+
+        <div
+            id="readinessResult"
+            class="ai-result-box"
+            style="display:none;"
+        ></div>
+
+
+        <div
+            id="interviewQuestionsResult"
+            class="ai-result-box"
+            style="display:none;"
+        ></div>
+
+
+        <div
+            id="roadmapResult"
+            class="ai-result-box"
+            style="display:none;"
+        ></div>
+
+
+        <div
+            id="gapResult"
+            class="ai-result-box"
+            style="display:none;"
+        ></div>
+
+
+        <div
+            id="consistencyResult"
+            class="ai-result-box"
+            style="display:none;"
+        ></div>
+
+
+        <div
+            id="skillEvidenceResult"
+            class="ai-result-box"
+            style="display:none;"
+        ></div>
+
+
+    </form>
+
+
+
+    <!-- =====================================================
+         RESUME PREVIEW
+    ====================================================== -->
+
+    <section
+        class="resume-preview"
+        id="resumePreview"
+    >
+
+
+        <!-- HEADER -->
+
+        <div class="preview-header">
+
+            <h2 id="previewName">
+                Your Name
+            </h2>
+
+            <p id="previewContact"></p>
+
+            <div
+                id="previewLinks"
+                class="preview-links"
+            ></div>
+
+        </div>
+
+
+
+        <!-- SUMMARY -->
+
+        <div
+            class="preview-section"
+            id="summarySection"
+        >
+
+            <h3>
+                Professional Summary
+            </h3>
+
+            <p
+                id="previewSummary"
+                class="preview-summary"
+            ></p>
+
+        </div>
+
+
+
+        <!-- EDUCATION -->
+
+        <div
+            class="preview-section"
+            id="educationSection"
+        >
+
+            <h3>
+                Education
+            </h3>
+
+            <div id="previewEducations"></div>
+
+        </div>
+
+
+
+        <!-- SKILLS -->
+
+        <div
+            class="preview-section"
+            id="skillsSection"
+        >
+
+            <h3>
+                Skills
+            </h3>
+
+            <div id="previewSkills"></div>
+
+        </div>
+
+
+
+        <!-- EXPERIENCE -->
+
+        <div
+            class="preview-section"
+            id="experienceSection"
+        >
+
+            <h3>
+                Experience
+            </h3>
+
+            <div id="previewExperiences"></div>
+
+        </div>
+
+
+
+        <!-- PROJECTS -->
+
+        <div
+            class="preview-section"
+            id="projectSection"
+        >
+
+            <h3>
+                Projects
+            </h3>
+
+            <div id="previewProjects"></div>
+
+        </div>
+
+
+
+        <!-- CERTIFICATIONS -->
+
+        <div
+            class="preview-section"
+            id="certificationSection"
+        >
+
+            <h3>
+                Certifications
+            </h3>
+
+            <p
+                id="previewCertifications"
+                class="preview-certifications"
+            ></p>
+
+        </div>
+
+
+    </section>
+
+
+</div>
+
+
+
+<!-- =====================================================
+     JAVASCRIPT
+===================================================== -->
+
+<script>
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function () {
+
+
+        /* =====================================================
+           HELPERS
+        ===================================================== */
+
+        function el(id) {
+
+            return document.getElementById(id);
+
+        }
+
+
+        function value(id) {
+
+            const item = el(id);
+
+            return item
+                ? item.value.trim()
+                : "";
+
+        }
+
+
+        function toggleSection(
+            id,
+            condition
+        ) {
+
+            const section = el(id);
+
+            if (!section) {
+                return;
+            }
+
+            section.style.display =
+                condition
+                    ? "block"
+                    : "none";
+
+        }
+
+
+
+        /* =====================================================
+           POST JSON
+        ===================================================== */
+
+        async function postJSON(
+            url,
+            payload
+        ) {
+
+            const response =
+                await fetch(
+                    url,
+                    {
+                        method:
+                            "POST",
+
+                        headers: {
+                            "Content-Type":
+                                "application/json"
+                        },
+
+                        body:
+                            JSON.stringify(
+                                payload
+                            )
+                    }
+                );
+
+
+            if (!response.ok) {
+
+                throw new Error(
+                    "Server returned " +
+                    response.status
+                );
+
+            }
+
+
+            return await response.json();
+
+        }
+
+
+
+        /* =====================================================
+           AI RESULT
+        ===================================================== */
+
+        function showResult(
+            id,
+            text
+        ) {
+
+            const box = el(id);
+
+            if (!box) {
+                return;
+            }
+
+
+            box.textContent =
+                text;
+
+
+            box.style.display =
+                "block";
+
+
+            box.scrollIntoView({
+                behavior:
+                    "smooth",
+
+                block:
+                    "center"
+            });
+
+        }
+
+
+
+        /* =====================================================
+           EDUCATION
+        ===================================================== */
+
+        function getEducations() {
+
+            const educations = [];
+
+
+            document
+                .querySelectorAll(
+                    ".education-item"
+                )
+                .forEach(
+                    function (item) {
+
+
+                        const degree =
+                            item
+                            .querySelector(
+                                ".education-degree"
+                            )
+                            .value
+                            .trim();
+
+
+                        const college =
+                            item
+                            .querySelector(
+                                ".education-college"
+                            )
+                            .value
+                            .trim();
+
+
+                        const startYear =
+                            item
+                            .querySelector(
+                                ".education-start-year"
+                            )
+                            .value
+                            .trim();
+
+
+                        const endYear =
+                            item
+                            .querySelector(
+                                ".education-end-year"
+                            )
+                            .value
+                            .trim();
+
+
+                        if (
+                            degree ||
+                            college ||
+                            startYear ||
+                            endYear
+                        ) {
+
+                            educations.push({
+                                degree:
+                                    degree,
+
+                                college:
+                                    college,
+
+                                startYear:
+                                    startYear,
+
+                                endYear:
+                                    endYear
+                            });
+
+                        }
+
+                    }
+                );
+
+
+            return educations;
+
+        }
+
+
+
+        function getEducationText() {
+
+            return getEducations()
+                .map(
+                    function (
+                        education,
+                        index
+                    ) {
+
+                        const years = [
+                            education.startYear,
+                            education.endYear
+                        ]
+                        .filter(Boolean)
+                        .join(" - ");
+
+
+                        return (
+                            "Education " +
+                            (index + 1) +
+                            ":\n" +
+
+                            "Degree: " +
+                            education.degree +
+                            "\n" +
+
+                            "Institution: " +
+                            education.college +
+                            "\n" +
+
+                            "Duration: " +
+                            years
+                        );
+
+                    }
+                )
+                .join("\n\n");
+
+        }
+
+
+
+        /* =====================================================
+           EXPERIENCE
+        ===================================================== */
+
+        function getExperiences() {
+
+            const experiences = [];
+
+
+            document
+                .querySelectorAll(
+                    ".experience-item"
+                )
+                .forEach(
+                    function (item) {
+
+
+                        const title =
+                            item
+                            .querySelector(
+                                ".experience-title"
+                            )
+                            .value
+                            .trim();
+
+
+                        const company =
+                            item
+                            .querySelector(
+                                ".experience-company"
+                            )
+                            .value
+                            .trim();
+
+
+                        const description =
+                            item
+                            .querySelector(
+                                ".experience-description"
+                            )
+                            .value
+                            .trim();
+
+
+                        if (
+                            title ||
+                            company ||
+                            description
+                        ) {
+
+                            experiences.push({
+                                title:
+                                    title,
+
+                                company:
+                                    company,
+
+                                description:
+                                    description
+                            });
+
+                        }
+
+                    }
+                );
+
+
+            return experiences;
+
+        }
+
+
+
+        function getExperiencesText() {
+
+            return getExperiences()
+                .map(
+                    function (
+                        experience,
+                        index
+                    ) {
+
+                        return (
+                            "Experience " +
+                            (index + 1) +
+                            ":\n" +
+
+                            "Role: " +
+                            experience.title +
+                            "\n" +
+
+                            "Company: " +
+                            experience.company +
+                            "\n" +
+
+                            "Description: " +
+                            experience.description
+                        );
+
+                    }
+                )
+                .join("\n\n");
+
+        }
+
+
+
+        /* =====================================================
+           PROJECTS
+        ===================================================== */
+
+        function getProjects() {
+
+            const projects = [];
+
+
+            document
+                .querySelectorAll(
+                    ".project-item"
+                )
+                .forEach(
+                    function (item) {
+
+
+                        const name =
+                            item
+                            .querySelector(
+                                ".project-name"
+                            )
+                            .value
+                            .trim();
+
+
+                        const description =
+                            item
+                            .querySelector(
+                                ".project-description"
+                            )
+                            .value
+                            .trim();
+
+
+                        if (
+                            name ||
+                            description
+                        ) {
+
+                            projects.push({
+                                name:
+                                    name,
+
+                                description:
+                                    description
+                            });
+
+                        }
+
+                    }
+                );
+
+
+            return projects;
+
+        }
+
+
+
+        function getProjectsText() {
+
+            return getProjects()
+                .map(
+                    function (
+                        project,
+                        index
+                    ) {
+
+                        return (
+                            "Project " +
+                            (index + 1) +
+                            ":\n" +
+
+                            "Name: " +
+                            project.name +
+                            "\n" +
+
+                            "Description: " +
+                            project.description
+                        );
+
+                    }
+                )
+                .join("\n\n");
+
+        }
+
+
+
+        /* =====================================================
+           PROFILE DATA FOR AI
+        ===================================================== */
+
+        function profileData() {
+
+            return {
+
+                name:
+                    value("fullName"),
+
+                summary:
+                    value("summary"),
+
+                skills:
+                    value("skills"),
+
+                education:
+                    getEducationText(),
+
+                experience:
+                    getExperiencesText(),
+
+                project:
+                    getProjectsText(),
+
+                certifications:
+                    value("certifications")
+
+            };
+
+        }
+
+
+
+        /* =====================================================
+           LINK CREATOR
+        ===================================================== */
+
+        function createProfileLink(
+            url,
+            label
+        ) {
+
+            let finalURL =
+                url.trim();
+
+
+            if (
+                !finalURL.startsWith(
+                    "http://"
+                )
+                &&
+                !finalURL.startsWith(
+                    "https://"
+                )
+            ) {
+
+                finalURL =
+                    "https://" +
+                    finalURL;
+
+            }
+
+
+            const link =
+                document.createElement(
+                    "a"
+                );
+
+
+            link.href =
+                finalURL;
+
+
+            link.target =
+                "_blank";
+
+
+            link.rel =
+                "noopener noreferrer";
+
+
+            link.textContent =
+                label;
+
+
+            return link;
+
+        }
+
+
+
+        /* =====================================================
+           EDUCATION NUMBERING
+        ===================================================== */
+
+        function updateEducationNumbers() {
+
+            const items =
+                document.querySelectorAll(
+                    ".education-item"
+                );
+
+
+            items.forEach(
+                function (
+                    item,
+                    index
+                ) {
+
+
+                    const title =
+                        item.querySelector(
+                            ".education-number"
+                        );
+
+
+                    const removeButton =
+                        item.querySelector(
+                            ".remove-education-btn"
+                        );
+
+
+                    if (title) {
+
+                        title.textContent =
+                            "Education " +
+                            (index + 1);
+
+                    }
+
+
+                    if (removeButton) {
+
+                        removeButton.style.display =
+                            items.length > 1
+                                ? "inline-flex"
+                                : "none";
+
+                    }
+
+                }
+            );
+
+        }
+
+
+
+        /* =====================================================
+           EXPERIENCE NUMBERING
+        ===================================================== */
+
+        function updateExperienceNumbers() {
+
+            const items =
+                document.querySelectorAll(
+                    ".experience-item"
+                );
+
+
+            items.forEach(
+                function (
+                    item,
+                    index
+                ) {
+
+
+                    const title =
+                        item.querySelector(
+                            ".experience-number"
+                        );
+
+
+                    const removeButton =
+                        item.querySelector(
+                            ".remove-experience-btn"
+                        );
+
+
+                    if (title) {
+
+                        title.textContent =
+                            "Experience " +
+                            (index + 1);
+
+                    }
+
+
+                    if (removeButton) {
+
+                        removeButton.style.display =
+                            items.length > 1
+                                ? "inline-flex"
+                                : "none";
+
+                    }
+
+                }
+            );
+
+        }
+
+
+
+        /* =====================================================
+           PROJECT NUMBERING
+        ===================================================== */
+
+        function updateProjectNumbers() {
+
+            const items =
+                document.querySelectorAll(
+                    ".project-item"
+                );
+
+
+            items.forEach(
+                function (
+                    item,
+                    index
+                ) {
+
+
+                    const title =
+                        item.querySelector(
+                            ".project-number"
+                        );
+
+
+                    const removeButton =
+                        item.querySelector(
+                            ".remove-project-btn"
+                        );
+
+
+                    if (title) {
+
+                        title.textContent =
+                            "Project " +
+                            (index + 1);
+
+                    }
+
+
+                    if (removeButton) {
+
+                        removeButton.style.display =
+                            items.length > 1
+                                ? "inline-flex"
+                                : "none";
+
+                    }
+
+                }
+            );
+
+        }
+
+
+
+        /* =====================================================
+           ADD EDUCATION
+        ===================================================== */
+
+        el("addEducationBtn")
+        .addEventListener(
+            "click",
+            function () {
+
+
+                const item =
+                    document.createElement(
+                        "div"
+                    );
+
+
+                item.className =
+                    "education-item";
+
+
+                item.innerHTML = `
+
+                    <div class="entry-header">
+
+                        <h3 class="education-number">
+                            Education
+                        </h3>
+
+                        <button
+                            type="button"
+                            class="remove-entry-btn remove-education-btn"
+                        >
+                            ✕ Remove
+                        </button>
+
+                    </div>
+
+
+                    <div class="form-grid">
+
+
+                        <div class="form-group">
+
+                            <label>
+                                Degree / Course
+                            </label>
+
+                            <input
+                                type="text"
+                                class="education-degree"
+                                placeholder="B.Tech CSE / Diploma AIML"
+                            >
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label>
+                                College / University
+                            </label>
+
+                            <input
+                                type="text"
+                                class="education-college"
+                                placeholder="Institute name"
+                            >
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label>
+                                Start Year
+                            </label>
+
+                            <input
+                                type="text"
+                                class="education-start-year"
+                                placeholder="2026"
+                            >
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label>
+                                End Year
+                            </label>
+
+                            <input
+                                type="text"
+                                class="education-end-year"
+                                placeholder="2029"
+                            >
+
+                        </div>
+
+                    </div>
+
+                `;
+
+
+                el("educationContainer")
+                    .appendChild(
+                        item
+                    );
+
+
+                updateEducationNumbers();
+
+                updateResumePreview(
+                    false
+                );
+
+
+                item.scrollIntoView({
+                    behavior:
+                        "smooth",
+
+                    block:
+                        "center"
+                });
+
+            }
+        );
+
+
+
+        /* =====================================================
+           REMOVE EDUCATION
+        ===================================================== */
+
+        el("educationContainer")
+        .addEventListener(
+            "click",
+            function (event) {
+
+
+                const removeButton =
+                    event.target.closest(
+                        ".remove-education-btn"
+                    );
+
+
+                if (!removeButton) {
+                    return;
+                }
+
+
+                if (
+                    document
+                    .querySelectorAll(
+                        ".education-item"
+                    )
+                    .length > 1
+                ) {
+
+                    removeButton
+                        .closest(
+                            ".education-item"
+                        )
+                        .remove();
+
+
+                    updateEducationNumbers();
+
+                    updateResumePreview(
+                        false
+                    );
+
+                }
+
+            }
+        );
+
+
+
+        /* =====================================================
+           ADD EXPERIENCE
+        ===================================================== */
+
+        el("addExperienceBtn")
+        .addEventListener(
+            "click",
+            function () {
+
+
+                const item =
+                    document.createElement(
+                        "div"
+                    );
+
+
+                item.className =
+                    "experience-item";
+
+
+                item.innerHTML = `
+
+                    <div class="entry-header">
+
+                        <h3 class="experience-number">
+                            Experience
+                        </h3>
+
+                        <button
+                            type="button"
+                            class="remove-entry-btn remove-experience-btn"
+                        >
+                            ✕ Remove
+                        </button>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Job / Internship Title
+                        </label>
+
+                        <input
+                            type="text"
+                            class="experience-title"
+                            placeholder="Python Developer Intern"
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Company
+                        </label>
+
+                        <input
+                            type="text"
+                            class="experience-company"
+                            placeholder="Company name"
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Description
+                        </label>
+
+                        <textarea
+                            class="experience-description"
+                            rows="5"
+                            placeholder="Describe responsibilities and achievements..."
+                        ></textarea>
+
+                    </div>
+
+
+                    <button
+                        type="button"
+                        class="ai-builder-btn improve-experience-btn"
+                    >
+                        ✨ Improve Experience with AI
+                    </button>
+
+                `;
+
+
+                el("experienceContainer")
+                    .appendChild(
+                        item
+                    );
+
+
+                updateExperienceNumbers();
+
+                updateResumePreview(
+                    false
+                );
+
+
+                item.scrollIntoView({
+                    behavior:
+                        "smooth",
+
+                    block:
+                        "center"
+                });
+
+            }
+        );
+
+
+
+        /* =====================================================
+           EXPERIENCE REMOVE + AI
+        ===================================================== */
+
+        el("experienceContainer")
+        .addEventListener(
+            "click",
+            async function (event) {
+
+
+                const removeButton =
+                    event.target.closest(
+                        ".remove-experience-btn"
+                    );
+
+
+                if (removeButton) {
+
+
+                    if (
+                        document
+                        .querySelectorAll(
+                            ".experience-item"
+                        )
+                        .length > 1
+                    ) {
+
+                        removeButton
+                            .closest(
+                                ".experience-item"
+                            )
+                            .remove();
+
+
+                        updateExperienceNumbers();
+
+                        updateResumePreview(
+                            false
+                        );
+
+                    }
+
+
+                    return;
+
+                }
+
+
+
+                const improveButton =
+                    event.target.closest(
+                        ".improve-experience-btn"
+                    );
+
+
+                if (!improveButton) {
+                    return;
+                }
+
+
+                const item =
+                    improveButton.closest(
+                        ".experience-item"
+                    );
+
+
+                const title =
+                    item
+                    .querySelector(
+                        ".experience-title"
+                    )
+                    .value
+                    .trim();
+
+
+                const company =
+                    item
+                    .querySelector(
+                        ".experience-company"
+                    )
+                    .value
+                    .trim();
+
+
+                const descriptionInput =
+                    item.querySelector(
+                        ".experience-description"
+                    );
+
+
+                const description =
+                    descriptionInput
+                    .value
+                    .trim();
+
+
+                if (
+                    !title ||
+                    !description
+                ) {
+
+                    alert(
+                        "Please enter job title and experience description first."
+                    );
+
+                    return;
+
+                }
+
+
+                improveButton.disabled =
+                    true;
+
+
+                improveButton.textContent =
+                    "✨ Improving with AI...";
+
+
+                try {
+
+
+                    const result =
+                        await postJSON(
+                            "/improve-experience",
+                            {
+
+                                job_title:
+                                    title,
+
+                                company:
+                                    company,
+
+                                experience_description:
+                                    description
+
+                            }
+                        );
+
+
+                    descriptionInput.value =
+                        result.improved_description
+                        ||
+                        description;
+
+
+                    improveButton.textContent =
+                        "✅ Experience Improved";
+
+
+                    updateResumePreview(
+                        false
+                    );
+
+                }
+
+
+                catch (error) {
+
+                    console.error(
+                        error
+                    );
+
+
+                    alert(
+                        "Could not improve experience."
+                    );
+
+                }
+
+
+                finally {
+
+
+                    improveButton.disabled =
+                        false;
+
+
+                    setTimeout(
+                        function () {
+
+                            improveButton.textContent =
+                                "✨ Improve Experience with AI";
+
+                        },
+                        1500
+                    );
+
+                }
+
+            }
+        );
+
+
+
+        /* =====================================================
+           ADD PROJECT
+        ===================================================== */
+
+        el("addProjectBtn")
+        .addEventListener(
+            "click",
+            function () {
+
+
+                const item =
+                    document.createElement(
+                        "div"
+                    );
+
+
+                item.className =
+                    "project-item";
+
+
+                item.innerHTML = `
+
+                    <div class="entry-header">
+
+                        <h3 class="project-number">
+                            Project
+                        </h3>
+
+                        <button
+                            type="button"
+                            class="remove-entry-btn remove-project-btn"
+                        >
+                            ✕ Remove
+                        </button>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Project Name
+                        </label>
+
+                        <input
+                            type="text"
+                            class="project-name"
+                            placeholder="Project name"
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Project Description
+                        </label>
+
+                        <textarea
+                            class="project-description"
+                            rows="5"
+                            placeholder="Explain what you built, technologies used and your contribution..."
+                        ></textarea>
+
+                    </div>
+
+
+                    <button
+                        type="button"
+                        class="ai-builder-btn improve-project-btn"
+                    >
+                        ✨ Improve Project with AI
+                    </button>
+
+                `;
+
+
+                el("projectsContainer")
+                    .appendChild(
+                        item
+                    );
+
+
+                updateProjectNumbers();
+
+                updateResumePreview(
+                    false
+                );
+
+
+                item.scrollIntoView({
+                    behavior:
+                        "smooth",
+
+                    block:
+                        "center"
+                });
+
+            }
+        );
+
+
+
+        /* =====================================================
+           PROJECT REMOVE + AI
+        ===================================================== */
+
+        el("projectsContainer")
+        .addEventListener(
+            "click",
+            async function (event) {
+
+
+                const removeButton =
+                    event.target.closest(
+                        ".remove-project-btn"
+                    );
+
+
+                if (removeButton) {
+
+
+                    if (
+                        document
+                        .querySelectorAll(
+                            ".project-item"
+                        )
+                        .length > 1
+                    ) {
+
+                        removeButton
+                            .closest(
+                                ".project-item"
+                            )
+                            .remove();
+
+
+                        updateProjectNumbers();
+
+                        updateResumePreview(
+                            false
+                        );
+
+                    }
+
+
+                    return;
+
+                }
+
+
+
+                const improveButton =
+                    event.target.closest(
+                        ".improve-project-btn"
+                    );
+
+
+                if (!improveButton) {
+                    return;
+                }
+
+
+                const item =
+                    improveButton.closest(
+                        ".project-item"
+                    );
+
+
+                const name =
+                    item
+                    .querySelector(
+                        ".project-name"
+                    )
+                    .value
+                    .trim();
+
+
+                const descriptionInput =
+                    item.querySelector(
+                        ".project-description"
+                    );
+
+
+                const description =
+                    descriptionInput
+                    .value
+                    .trim();
+
+
+                if (
+                    !name ||
+                    !description
+                ) {
+
+                    alert(
+                        "Please enter project name and description first."
+                    );
+
+                    return;
+
+                }
+
+
+                improveButton.disabled =
+                    true;
+
+
+                improveButton.textContent =
+                    "✨ Improving with AI...";
+
+
+                try {
+
+
+                    const result =
+                        await postJSON(
+                            "/improve-project",
+                            {
+
+                                project_name:
+                                    name,
+
+                                project_description:
+                                    description
+
+                            }
+                        );
+
+
+                    descriptionInput.value =
+                        result.improved_description
+                        ||
+                        description;
+
+
+                    improveButton.textContent =
+                        "✅ Project Improved";
+
+
+                    updateResumePreview(
+                        false
+                    );
+
+                }
+
+
+                catch (error) {
+
+                    console.error(
+                        error
+                    );
+
+
+                    alert(
+                        "Could not improve project."
+                    );
+
+                }
+
+
+                finally {
+
+
+                    improveButton.disabled =
+                        false;
+
+
+                    setTimeout(
+                        function () {
+
+                            improveButton.textContent =
+                                "✨ Improve Project with AI";
+
+                        },
+                        1500
+                    );
+
+                }
+
+            }
+        );
+
+
+
+        /* =====================================================
+           UPDATE RESUME PREVIEW
+        ===================================================== */
+
+        function updateResumePreview(
+            showResume = true
+        ) {
+
+
+            /* NAME */
+
+            el("previewName").textContent =
+                value("fullName")
+                ||
+                "Your Name";
+
+
+
+            /* CONTACT */
+
+            const contactParts = [
+
+                value("email"),
+                value("phone"),
+                value("location")
+
+            ]
+            .filter(Boolean);
+
+
+            el("previewContact").textContent =
+                contactParts.join(
+                    " • "
+                );
+
+
+            el("previewContact").style.display =
+                contactParts.length
+                    ? "block"
+                    : "none";
+
+
+
+            /* LINKS */
+
+            const linkedin =
+                value("linkedin");
+
+
+            const github =
+                value("github");
+
+
+            const previewLinks =
+                el("previewLinks");
+
+
+            previewLinks.innerHTML =
+                "";
+
+
+            if (linkedin) {
+
+                previewLinks.appendChild(
+                    createProfileLink(
+                        linkedin,
+                        "LinkedIn"
+                    )
+                );
+
+            }
+
+
+            if (
+                linkedin &&
+                github
+            ) {
+
+                const separator =
+                    document.createElement(
+                        "span"
+                    );
+
+
+                separator.textContent =
+                    " • ";
+
+
+                previewLinks.appendChild(
+                    separator
+                );
+
+            }
+
+
+            if (github) {
+
+                previewLinks.appendChild(
+                    createProfileLink(
+                        github,
+                        "GitHub"
+                    )
+                );
+
+            }
+
+
+            previewLinks.style.display =
+                linkedin || github
+                    ? "flex"
+                    : "none";
+
+
+
+            /* SUMMARY */
+
+            const summary =
+                value("summary");
+
+
+            el("previewSummary").textContent =
+                summary;
+
+
+            toggleSection(
+                "summarySection",
+                Boolean(summary)
+            );
+
+
+
+            /* EDUCATION */
+
+            const educations =
+                getEducations();
+
+
+            const previewEducations =
+                el("previewEducations");
+
+
+            previewEducations.innerHTML =
+                "";
+
+
+            educations.forEach(
+                function (education) {
+
+
+                    const item =
+                        document.createElement(
+                            "div"
+                        );
+
+
+                    item.className =
+                        "preview-education-item";
+
+
+
+                    if (education.degree) {
+
+
+                        const degree =
+                            document.createElement(
+                                "h4"
+                            );
+
+
+                        degree.className =
+                            "preview-education-degree";
+
+
+                        degree.textContent =
+                            education.degree;
+
+
+                        item.appendChild(
+                            degree
+                        );
+
+                    }
+
+
+
+                    if (education.college) {
+
+
+                        const college =
+                            document.createElement(
+                                "p"
+                            );
+
+
+                        college.className =
+                            "preview-education-college";
+
+
+                        college.textContent =
+                            education.college;
+
+
+                        item.appendChild(
+                            college
+                        );
+
+                    }
+
+
+
+                    const years = [
+
+                        education.startYear,
+                        education.endYear
+
+                    ]
+                    .filter(Boolean)
+                    .join(" - ");
+
+
+
+                    if (years) {
+
+
+                        const duration =
+                            document.createElement(
+                                "p"
+                            );
+
+
+                        duration.className =
+                            "preview-education-duration";
+
+
+                        duration.textContent =
+                            years;
+
+
+                        item.appendChild(
+                            duration
+                        );
+
+                    }
+
+
+                    previewEducations.appendChild(
+                        item
+                    );
+
+                }
+            );
+
+
+            toggleSection(
+                "educationSection",
+                educations.length > 0
+            );
+
+
+
+            /* SKILLS */
+
+            const skills =
+                value("skills");
+
+
+            const previewSkills =
+                el("previewSkills");
+
+
+            previewSkills.innerHTML =
+                "";
+
+
+            if (skills) {
+
+
+                skills
+                .split(",")
+                .map(
+                    function (skill) {
+
+                        return skill.trim();
+
+                    }
+                )
+                .filter(Boolean)
+                .forEach(
+                    function (skill) {
+
+
+                        const tag =
+                            document.createElement(
+                                "span"
+                            );
+
+
+                        tag.className =
+                            "resume-skill-tag";
+
+
+                        tag.textContent =
+                            skill;
+
+
+                        previewSkills.appendChild(
+                            tag
+                        );
+
+                    }
+                );
+
+            }
+
+
+            toggleSection(
+                "skillsSection",
+                Boolean(skills)
+            );
+
+
+
+            /* EXPERIENCE */
+
+            const experiences =
+                getExperiences();
+
+
+            const previewExperiences =
+                el("previewExperiences");
+
+
+            previewExperiences.innerHTML =
+                "";
+
+
+            experiences.forEach(
+                function (experience) {
+
+
+                    const item =
+                        document.createElement(
+                            "div"
+                        );
+
+
+                    item.className =
+                        "preview-experience-item";
+
+
+
+                    if (experience.title) {
+
+
+                        const title =
+                            document.createElement(
+                                "h4"
+                            );
+
+
+                        title.className =
+                            "preview-experience-title";
+
+
+                        title.textContent =
+                            experience.title;
+
+
+                        item.appendChild(
+                            title
+                        );
+
+                    }
+
+
+
+                    if (experience.company) {
+
+
+                        const company =
+                            document.createElement(
+                                "p"
+                            );
+
+
+                        company.className =
+                            "preview-experience-company";
+
+
+                        company.textContent =
+                            experience.company;
+
+
+                        item.appendChild(
+                            company
+                        );
+
+                    }
+
+
+
+                    if (experience.description) {
+
+
+                        const description =
+                            document.createElement(
+                                "p"
+                            );
+
+
+                        description.className =
+                            "preview-experience-description";
+
+
+                        description.textContent =
+                            experience.description;
+
+
+                        item.appendChild(
+                            description
+                        );
+
+                    }
+
+
+                    previewExperiences.appendChild(
+                        item
+                    );
+
+                }
+            );
+
+
+            toggleSection(
+                "experienceSection",
+                experiences.length > 0
+            );
+
+
+
+            /* PROJECTS */
+
+            const projects =
+                getProjects();
+
+
+            const previewProjects =
+                el("previewProjects");
+
+
+            previewProjects.innerHTML =
+                "";
+
+
+            projects.forEach(
+                function (project) {
+
+
+                    const item =
+                        document.createElement(
+                            "div"
+                        );
+
+
+                    item.className =
+                        "preview-project-item";
+
+
+
+                    if (project.name) {
+
+
+                        const name =
+                            document.createElement(
+                                "h4"
+                            );
+
+
+                        name.className =
+                            "preview-project-name";
+
+
+                        name.textContent =
+                            project.name;
+
+
+                        item.appendChild(
+                            name
+                        );
+
+                    }
+
+
+
+                    if (project.description) {
+
+
+                        const description =
+                            document.createElement(
+                                "p"
+                            );
+
+
+                        description.className =
+                            "preview-project-description";
+
+
+                        description.textContent =
+                            project.description;
+
+
+                        item.appendChild(
+                            description
+                        );
+
+                    }
+
+
+                    previewProjects.appendChild(
+                        item
+                    );
+
+                }
+            );
+
+
+            toggleSection(
+                "projectSection",
+                projects.length > 0
+            );
+
+
+
+            /* CERTIFICATIONS */
+
+            const certifications =
+                value("certifications");
+
+
+            el("previewCertifications").textContent =
+                certifications;
+
+
+            toggleSection(
+                "certificationSection",
+                Boolean(certifications)
+            );
+
+
+
+            /* SHOW PREVIEW */
+
+            if (showResume) {
+
+                el("resumePreview")
+                    .style
+                    .display =
+                    "block";
+
+            }
+
+
+            updateResumeFit();
+
+        }
+
+
+
+        /* =====================================================
+           ONE PAGE FIT CHECKER
+        ===================================================== */
+
+        function updateResumeFit() {
+
+
+            const fitCard =
+                el("resumeFitCard");
+
+
+            const fitMessage =
+                el("resumeFitMessage");
+
+
+            const fitPercentage =
+                el("resumeFitPercentage");
+
+
+            const fitProgress =
+                el("resumeFitProgressBar");
+
+
+            const fitDetails =
+                el("resumeFitDetails");
+
+
+
+            const hasData =
+
+                value("fullName")
+                ||
+                value("summary")
+                ||
+                value("skills")
+                ||
+                value("certifications")
+                ||
+                getEducations().length
+                ||
+                getExperiences().length
+                ||
+                getProjects().length;
+
+
+
+            fitCard.classList.remove(
+
+                "fit-good",
+                "fit-warning",
+                "fit-danger"
+
+            );
+
+
+
+            if (!hasData) {
+
+
+                fitPercentage.textContent =
+                    "0%";
+
+
+                fitProgress.style.width =
+                    "0%";
+
+
+                fitMessage.textContent =
+                    "Start filling your resume to check its length.";
+
+
+                fitDetails.textContent =
+                    "Estimated one-page usage will appear here.";
+
+
+                return;
+
+            }
+
+
+
+            const clone =
+                el("resumePreview")
+                .cloneNode(
+                    true
+                );
+
+
+            clone.removeAttribute(
+                "id"
+            );
+
+
+            clone.classList.add(
+                "resume-measure"
+            );
+
+
+            document.body.appendChild(
+                clone
+            );
+
+
+
+            const a4ContentHeight =
+                1032;
+
+
+            const resumeHeight =
+                clone.scrollHeight;
+
+
+            clone.remove();
+
+
+
+            const ratio =
+                resumeHeight /
+                a4ContentHeight;
+
+
+
+            const percentage =
+                Math.max(
+                    1,
+                    Math.round(
+                        ratio * 100
+                    )
+                );
+
+
+
+            fitPercentage.textContent =
+                percentage +
+                "%";
+
+
+            fitProgress.style.width =
+                Math.min(
+                    percentage,
+                    100
+                )
+                +
+                "%";
+
+
+
+            if (
+                ratio <= 0.90
+            ) {
+
+
+                fitCard.classList.add(
+                    "fit-good"
+                );
+
+
+                fitMessage.textContent =
+                    "✅ Excellent — comfortably fits in one page";
+
+
+                fitDetails.textContent =
+                    "Your resume currently uses about " +
+                    percentage +
+                    "% of one A4 page.";
+
+            }
+
+
+            else if (
+                ratio <= 1.05
+            ) {
+
+
+                fitCard.classList.add(
+                    "fit-good"
+                );
+
+
+                fitMessage.textContent =
+                    "✅ Good — fits in one page";
+
+
+                fitDetails.textContent =
+                    "Your resume is using almost the full A4 page.";
+
+            }
+
+
+            else if (
+                ratio <= 1.25
+            ) {
+
+
+                const extra =
+                    Math.round(
+                        (ratio - 1)
+                        *
+                        100
+                    );
+
+
+                fitCard.classList.add(
+                    "fit-warning"
+                );
+
+
+                fitMessage.textContent =
+                    "⚠️ Resume is slightly too long";
+
+
+                fitDetails.textContent =
+                    "Reduce approximately " +
+                    extra +
+                    "% of the content.";
+
+            }
+
+
+            else {
+
+
+                fitCard.classList.add(
+                    "fit-danger"
+                );
+
+
+                fitMessage.textContent =
+                    "⚠️ Resume is too long";
+
+
+                fitDetails.textContent =
+                    "Estimated length: " +
+                    ratio.toFixed(1) +
+                    " pages.";
+
+            }
+
+        }
+
+
+
+        /* =====================================================
+           PREVIEW
+        ===================================================== */
+
+        el("previewResumeBtn")
+        .addEventListener(
+            "click",
+            function () {
+
+
+                updateResumePreview(
+                    true
+                );
+
+
+                el("resumePreview")
+                .scrollIntoView({
+
+                    behavior:
+                        "smooth",
+
+                    block:
+                        "start"
+
+                });
+
+            }
+        );
+
+
+
+        /* =====================================================
+           PDF
+        ===================================================== */
+
+        el("generateResumeBtn")
+        .addEventListener(
+            "click",
+            function () {
+
+
+                updateResumePreview(
+                    true
+                );
+
+
+                setTimeout(
+                    function () {
+
+                        window.print();
+
+                    },
+                    300
+                );
+
+            }
+        );
+
+
+
+        /* =====================================================
+           GENERATE SUMMARY
+        ===================================================== */
+
+        el("generateSummaryBtn")
+        .addEventListener(
+            "click",
+            async function () {
+
+
+                const button =
+                    this;
+
+
+                const data =
+                    profileData();
+
+
+                if (
+                    !data.skills
+                    &&
+                    !data.education
+                    &&
+                    !data.experience
+                    &&
+                    !data.project
+                ) {
+
+                    alert(
+                        "Please add skills, education, experience or project details first."
+                    );
+
+                    return;
+
+                }
+
+
+
+                button.disabled =
+                    true;
+
+
+                button.textContent =
+                    "✨ Generating with AI...";
+
+
+                try {
+
+
+                    const result =
+                        await postJSON(
+                            "/generate-summary",
+                            {
+
+                                name:
+                                    data.name,
+
+                                skills:
+                                    data.skills,
+
+                                education:
+                                    data.education,
+
+                                experience:
+                                    data.experience,
+
+                                project:
+                                    data.project
+
+                            }
+                        );
+
+
+                    el("summary").value =
+                        result.summary
+                        ||
+                        "";
+
+
+                    button.textContent =
+                        "✅ Summary Generated";
+
+
+                    updateResumePreview(
+                        false
+                    );
+
+                }
+
+
+                catch (error) {
+
+
+                    console.error(
+                        error
+                    );
+
+
+                    alert(
+                        "AI summary could not be generated."
+                    );
+
+                }
+
+
+                finally {
+
+
+                    button.disabled =
+                        false;
+
+
+                    setTimeout(
+                        function () {
+
+                            button.textContent =
+                                "✨ Generate Summary with AI";
+
+                        },
+                        1500
+                    );
+
+                }
+
+            }
+        );
+
+
+
+        /* =====================================================
+           RECOMMEND SKILLS
+        ===================================================== */
+
+        el("recommendSkillsBtn")
+        .addEventListener(
+            "click",
+            async function () {
+
+
+                const button =
+                    this;
+
+
+                const data =
+                    profileData();
+
+
+                button.disabled =
+                    true;
+
+
+                button.textContent =
+                    "✨ Finding Skills...";
+
+
+                showResult(
+                    "skillRecommendations",
+                    "AI is analyzing your profile..."
+                );
+
+
+                try {
+
+
+                    const result =
+                        await postJSON(
+                            "/recommend-skills",
+                            {
+
+                                current_skills:
+                                    data.skills,
+
+                                education:
+                                    data.education,
+
+                                experience:
+                                    data.experience,
+
+                                project:
+                                    data.project
+
+                            }
+                        );
+
+
+                    showResult(
+                        "skillRecommendations",
+                        result.recommendations
+                        ||
+                        "No recommendations received."
+                    );
+
+
+                    button.textContent =
+                        "✅ Skills Recommended";
+
+                }
+
+
+                catch (error) {
+
+
+                    console.error(
+                        error
+                    );
+
+
+                    showResult(
+                        "skillRecommendations",
+                        "Could not load skill recommendations."
+                    );
+
+                }
+
+
+                finally {
+
+
+                    button.disabled =
+                        false;
+
+
+                    setTimeout(
+                        function () {
+
+                            button.textContent =
+                                "✨ Recommend Skills with AI";
+
+                        },
+                        1500
+                    );
+
+                }
+
+            }
+        );
+
+
+
+        /* =====================================================
+           READINESS
+        ===================================================== */
+
+        el("checkReadinessBtn")
+        .addEventListener(
+            "click",
+            async function () {
+
+
+                const button =
+                    this;
+
+
+                const data =
+                    profileData();
+
+
+                button.disabled =
+                    true;
+
+
+                button.textContent =
+                    "📊 Checking...";
+
+
+                showResult(
+                    "readinessResult",
+                    "AI is checking your resume readiness..."
+                );
+
+
+                try {
+
+
+                    const result =
+                        await postJSON(
+                            "/check-readiness",
+                            {
+
+                                summary:
+                                    data.summary,
+
+                                skills:
+                                    data.skills,
+
+                                education:
+                                    data.education,
+
+                                experience:
+                                    data.experience,
+
+                                project:
+                                    data.project,
+
+                                certifications:
+                                    data.certifications
+
+                            }
+                        );
+
+
+                    showResult(
+                        "readinessResult",
+                        result.readiness_result
+                        ||
+                        "No readiness result received."
+                    );
+
+
+                    button.textContent =
+                        "✅ Readiness Checked";
+
+                }
+
+
+                catch (error) {
+
+
+                    console.error(
+                        error
+                    );
+
+
+                    showResult(
+                        "readinessResult",
+                        "Could not check resume readiness."
+                    );
+
+                }
+
+
+                finally {
+
+
+                    button.disabled =
+                        false;
+
+
+                    setTimeout(
+                        function () {
+
+                            button.textContent =
+                                "📊 Check Resume Readiness";
+
+                        },
+                        1500
+                    );
+
+                }
+
+            }
+        );
+
+
+
+        /* =====================================================
+           INTERVIEW QUESTIONS
+        ===================================================== */
+
+        el("generateInterviewBtn")
+        .addEventListener(
+            "click",
+            async function () {
+
+
+                const button =
+                    this;
+
+
+                const data =
+                    profileData();
+
+
+                button.disabled =
+                    true;
+
+
+                button.textContent =
+                    "🎤 Generating...";
+
+
+                showResult(
+                    "interviewQuestionsResult",
+                    "AI is preparing personalized interview questions..."
+                );
+
+
+                try {
+
+
+                    const result =
+                        await postJSON(
+                            "/generate-interview-questions",
+                            {
+
+                                skills:
+                                    data.skills,
+
+                                experience:
+                                    data.experience,
+
+                                project:
+                                    data.project,
+
+                                education:
+                                    data.education
+
+                            }
+                        );
+
+
+                    showResult(
+                        "interviewQuestionsResult",
+                        result.questions
+                        ||
+                        "No interview questions received."
+                    );
+
+
+                    button.textContent =
+                        "✅ Questions Generated";
+
+                }
+
+
+                catch (error) {
+
+
+                    console.error(
+                        error
+                    );
+
+
+                    showResult(
+                        "interviewQuestionsResult",
+                        "Could not generate interview questions."
+                    );
+
+                }
+
+
+                finally {
+
+
+                    button.disabled =
+                        false;
+
+
+                    setTimeout(
+                        function () {
+
+                            button.textContent =
+                                "🎤 Generate Interview Questions";
+
+                        },
+                        1500
+                    );
+
+                }
+
+            }
+        );
+
+
+
+        /* =====================================================
+           ROADMAP
+        ===================================================== */
+
+        el("generateRoadmapBtn")
+        .addEventListener(
+            "click",
+            async function () {
+
+
+                const button =
+                    this;
+
+
+                const data =
+                    profileData();
+
+
+                button.disabled =
+                    true;
+
+
+                button.textContent =
+                    "🗺️ Generating...";
+
+
+                showResult(
+                    "roadmapResult",
+                    "AI is creating your career roadmap..."
+                );
+
+
+                try {
+
+
+                    const result =
+                        await postJSON(
+                            "/generate-roadmap",
+                            {
+
+                                skills:
+                                    data.skills,
+
+                                education:
+                                    data.education,
+
+                                experience:
+                                    data.experience,
+
+                                project:
+                                    data.project
+
+                            }
+                        );
+
+
+                    showResult(
+                        "roadmapResult",
+                        result.roadmap
+                        ||
+                        "No roadmap received."
+                    );
+
+
+                    button.textContent =
+                        "✅ Roadmap Generated";
+
+                }
+
+
+                catch (error) {
+
+
+                    console.error(
+                        error
+                    );
+
+
+                    showResult(
+                        "roadmapResult",
+                        "Could not generate career roadmap."
+                    );
+
+                }
+
+
+                finally {
+
+
+                    button.disabled =
+                        false;
+
+
+                    setTimeout(
+                        function () {
+
+                            button.textContent =
+                                "🗺️ Generate Career Roadmap";
+
+                        },
+                        1500
+                    );
+
+                }
+
+            }
+        );
+
+
+
+        /* =====================================================
+           RESUME GAPS
+        ===================================================== */
+
+        el("detectGapsBtn")
+        .addEventListener(
+            "click",
+            async function () {
+
+
+                const button =
+                    this;
+
+
+                const data =
+                    profileData();
+
+
+                button.disabled =
+                    true;
+
+
+                button.textContent =
+                    "🔎 Detecting...";
+
+
+                showResult(
+                    "gapResult",
+                    "AI is analyzing your resume..."
+                );
+
+
+                try {
+
+
+                    const result =
+                        await postJSON(
+                            "/detect-resume-gaps",
+                            {
+
+                                summary:
+                                    data.summary,
+
+                                skills:
+                                    data.skills,
+
+                                education:
+                                    data.education,
+
+                                experience:
+                                    data.experience,
+
+                                project:
+                                    data.project,
+
+                                certifications:
+                                    data.certifications
+
+                            }
+                        );
+
+
+                    showResult(
+                        "gapResult",
+                        result.gap_result
+                        ||
+                        "No gap result received."
+                    );
+
+
+                    button.textContent =
+                        "✅ Gaps Detected";
+
+                }
+
+
+                catch (error) {
+
+
+                    console.error(
+                        error
+                    );
+
+
+                    showResult(
+                        "gapResult",
+                        "Could not detect resume gaps."
+                    );
+
+                }
+
+
+                finally {
+
+
+                    button.disabled =
+                        false;
+
+
+                    setTimeout(
+                        function () {
+
+                            button.textContent =
+                                "🔎 Detect Resume Gaps";
+
+                        },
+                        1500
+                    );
+
+                }
+
+            }
+        );
+
+
+
+        /* =====================================================
+           CONSISTENCY
+        ===================================================== */
+
+        el("checkConsistencyBtn")
+        .addEventListener(
+            "click",
+            async function () {
+
+
+                const button =
+                    this;
+
+
+                const data =
+                    profileData();
+
+
+                button.disabled =
+                    true;
+
+
+                button.textContent =
+                    "⚠️ Checking...";
+
+
+                showResult(
+                    "consistencyResult",
+                    "AI is checking resume consistency..."
+                );
+
+
+                try {
+
+
+                    const result =
+                        await postJSON(
+                            "/check-contradictions",
+                            {
+
+                                skills:
+                                    data.skills,
+
+                                education:
+                                    data.education,
+
+                                experience:
+                                    data.experience,
+
+                                project:
+                                    data.project,
+
+                                certifications:
+                                    data.certifications
+
+                            }
+                        );
+
+
+                    showResult(
+                        "consistencyResult",
+                        result.contradiction_result
+                        ||
+                        "No consistency result received."
+                    );
+
+
+                    button.textContent =
+                        "✅ Consistency Checked";
+
+                }
+
+
+                catch (error) {
+
+
+                    console.error(
+                        error
+                    );
+
+
+                    showResult(
+                        "consistencyResult",
+                        "Could not check resume consistency."
+                    );
+
+                }
+
+
+                finally {
+
+
+                    button.disabled =
+                        false;
+
+
+                    setTimeout(
+                        function () {
+
+                            button.textContent =
+                                "⚠️ Check Resume Consistency";
+
+                        },
+                        1500
+                    );
+
+                }
+
+            }
+        );
+
+
+
+        /* =====================================================
+           VERIFY SKILLS
+        ===================================================== */
+
+        el("verifySkillsBtn")
+        .addEventListener(
+            "click",
+            async function () {
+
+
+                const button =
+                    this;
+
+
+                const data =
+                    profileData();
+
+
+                if (!data.skills) {
+
+                    alert(
+                        "Please enter at least one skill first."
+                    );
+
+                    return;
+
+                }
+
+
+                button.disabled =
+                    true;
+
+
+                button.textContent =
+                    "🧠 Verifying...";
+
+
+                showResult(
+                    "skillEvidenceResult",
+                    "AI is checking skill evidence..."
+                );
+
+
+                try {
+
+
+                    const result =
+                        await postJSON(
+                            "/verify-skills",
+                            {
+
+                                skills:
+                                    data.skills,
+
+                                education:
+                                    data.education,
+
+                                experience:
+                                    data.experience,
+
+                                project:
+                                    data.project
+
+                            }
+                        );
+
+
+                    showResult(
+                        "skillEvidenceResult",
+                        result.skill_evidence_result
+                        ||
+                        "No skill evidence result received."
+                    );
+
+
+                    button.textContent =
+                        "✅ Skills Verified";
+
+                }
+
+
+                catch (error) {
+
+
+                    console.error(
+                        error
+                    );
+
+
+                    showResult(
+                        "skillEvidenceResult",
+                        "Could not verify skill evidence."
+                    );
+
+                }
+
+
+                finally {
+
+
+                    button.disabled =
+                        false;
+
+
+                    setTimeout(
+                        function () {
+
+                            button.textContent =
+                                "🧠 Verify Skill Evidence";
+
+                        },
+                        1500
+                    );
+
+                }
+
+            }
+        );
+
+
+
+        /* =====================================================
+           LIVE UPDATE + FIT
+        ===================================================== */
+
+        let fitTimer;
+
+
+        el("resumeForm")
+        .addEventListener(
+            "input",
+            function () {
+
+
+                clearTimeout(
+                    fitTimer
+                );
+
+
+                fitTimer =
+                    setTimeout(
+                        function () {
+
+                            updateResumePreview(
+                                false
+                            );
+
+                        },
+                        180
+                    );
+
+            }
+        );
+
+
+
+        /* =====================================================
+           INITIAL SETUP
+        ===================================================== */
+
+        updateEducationNumbers();
+
+        updateExperienceNumbers();
+
+        updateProjectNumbers();
+
+        updateResumeFit();
+
+
+    }
+);
+
+</script>
+
+
+</body>
+</html>

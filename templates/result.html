@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>CVanta AI | Career Analysis</title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='style.css') }}"
+    >
+</head>
+
+
+<body class="result-page">
+
+<div class="result-container">
+
+
+    <!-- =====================================================
+         NAVBAR
+    ====================================================== -->
+
+    <nav class="result-navbar">
+
+        <a
+            href="/"
+            class="result-logo"
+        >
+            ✦ CVanta AI
+        </a>
+
+
+        <div class="result-nav-actions">
+
+            <a
+                href="/resume-builder"
+                class="result-nav-link"
+            >
+                Build Resume
+            </a>
+
+            <a
+                href="/"
+                class="analyze-again"
+            >
+                Analyze Another
+            </a>
+
+        </div>
+
+    </nav>
+
+
+    <!-- =====================================================
+         HERO
+    ====================================================== -->
+
+    <section class="result-header">
+
+        <div class="result-badge">
+            ✨ CVanta AI Career Intelligence
+        </div>
+
+
+        <h1>
+            Your Resume
+            <span>Career Analysis</span>
+        </h1>
+
+
+        <p>
+            Important career insights from your resume,
+            presented in a quick and easy-to-read format.
+        </p>
+
+    </section>
+
+
+    <!-- =====================================================
+         QUICK OVERVIEW
+    ====================================================== -->
+
+    <section class="result-overview-grid">
+
+
+        <!-- DOMAIN -->
+
+        <article class="overview-card">
+
+            <div class="overview-icon">
+                🌐
+            </div>
+
+            <div>
+
+                <span class="overview-label">
+                    Career Domain
+                </span>
+
+                <h3>
+                    {{ parsed_result.domain or detected_domain or "General" }}
+                </h3>
+
+            </div>
+
+        </article>
+
+
+        <!-- CAREER FIT -->
+
+        <article class="overview-card">
+
+            <div class="overview-icon">
+                📊
+            </div>
+
+            <div>
+
+                <span class="overview-label">
+                    Career Fit
+                </span>
+
+                <h3>
+
+                    {% if parsed_result.career_fit_score %}
+
+                        {{ parsed_result.career_fit_score }}/100
+
+                    {% else %}
+
+                        Analysis Complete
+
+                    {% endif %}
+
+                </h3>
+
+            </div>
+
+        </article>
+
+
+        <!-- SKILLS -->
+
+        <article class="overview-card">
+
+            <div class="overview-icon">
+                🧠
+            </div>
+
+            <div>
+
+                <span class="overview-label">
+                    Skills Found
+                </span>
+
+                <h3>
+                    {{ skills|length if skills else 0 }} Skills
+                </h3>
+
+            </div>
+
+        </article>
+
+
+        <!-- ENGINE -->
+
+        <article class="overview-card">
+
+            <div class="overview-icon">
+                ✨
+            </div>
+
+            <div>
+
+                <span class="overview-label">
+                    AI Engine
+                </span>
+
+                <h3>
+                    Gemini AI
+                </h3>
+
+            </div>
+
+        </article>
+
+    </section>
+
+
+    <!-- =====================================================
+         BEST CAREER + SCORE
+    ====================================================== -->
+
+    <section class="career-highlight-card">
+
+        <div class="career-highlight-top">
+
+
+            <div class="career-highlight-icon">
+                🎯
+            </div>
+
+
+            <div class="career-highlight-content">
+
+                <span class="career-eyebrow">
+                    Best Matching Career
+                </span>
+
+
+                <h2>
+                    {{ parsed_result.best_role or "Career role being evaluated" }}
+                </h2>
+
+
+                {% if parsed_result.specialization %}
+
+                    <p>
+                        {{ parsed_result.specialization }}
+                    </p>
+
+                {% endif %}
+
+            </div>
+
+
+            {% if parsed_result.career_fit_score %}
+
+                <div class="career-score-circle">
+
+                    <strong>
+                        {{ parsed_result.career_fit_score }}
+                    </strong>
+
+                    <span>
+                        /100
+                    </span>
+
+                </div>
+
+            {% endif %}
+
+        </div>
+
+
+        {% if parsed_result.career_fit_score %}
+
+            <div class="career-score-progress">
+
+                <div
+                    class="career-score-progress-fill"
+                    id="careerScoreBar"
+                    data-score="{{ parsed_result.career_fit_score or 0 }}"
+                ></div>
+
+            </div>
+
+        {% endif %}
+
+
+        {% if parsed_result.career_fit_explanation %}
+
+            <p class="career-score-description">
+                {{ parsed_result.career_fit_explanation }}
+            </p>
+
+        {% endif %}
+
+    </section>
+
+
+    <!-- =====================================================
+         CAREER INSIGHT GRID
+    ====================================================== -->
+
+    <section class="career-grid">
+
+
+        <!-- ALTERNATIVE ROLES -->
+
+        <article class="career-card">
+
+            <div class="career-card-heading">
+
+                <div class="career-card-icon">
+                    💼
+                </div>
+
+                <div>
+
+                    <h3>
+                        Alternative Roles
+                    </h3>
+
+                    <p>
+                        Other positions matching your profile
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            {% if parsed_result.alternative_roles %}
+
+                <div class="role-list">
+
+                    {% for role in parsed_result.alternative_roles %}
+
+                        <div class="role-item">
+
+                            <span class="role-number">
+                                {{ loop.index }}
+                            </span>
+
+                            <span>
+                                {{ role }}
+                            </span>
+
+                        </div>
+
+                    {% endfor %}
+
+                </div>
+
+
+            {% elif best_roles %}
+
+                <div class="role-list">
+
+                    {% for role in best_roles %}
+
+                        <div class="role-item">
+
+                            <span class="role-number">
+                                {{ loop.index }}
+                            </span>
+
+                            <span>
+                                {{ role }}
+                            </span>
+
+                        </div>
+
+                    {% endfor %}
+
+                </div>
+
+
+            {% else %}
+
+                <p class="empty-insight">
+                    No alternative roles available.
+                </p>
+
+            {% endif %}
+
+        </article>
+
+
+        <!-- STRENGTHS -->
+
+        <article class="career-card">
+
+            <div class="career-card-heading">
+
+                <div class="career-card-icon success-icon">
+                    💪
+                </div>
+
+                <div>
+
+                    <h3>
+                        Resume Strengths
+                    </h3>
+
+                    <p>
+                        What your resume already does well
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            {% if parsed_result.strengths %}
+
+                <ul class="insight-list success-list">
+
+                    {% for strength in parsed_result.strengths %}
+
+                        <li>
+                            {{ strength }}
+                        </li>
+
+                    {% endfor %}
+
+                </ul>
+
+            {% else %}
+
+                <p class="empty-insight">
+                    Strength analysis is available in the
+                    complete AI analysis below.
+                </p>
+
+            {% endif %}
+
+        </article>
+
+
+        <!-- IMPROVEMENTS -->
+
+        <article class="career-card">
+
+            <div class="career-card-heading">
+
+                <div class="career-card-icon warning-icon">
+                    📈
+                </div>
+
+                <div>
+
+                    <h3>
+                        Improve Next
+                    </h3>
+
+                    <p>
+                        Highest-value resume improvements
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            {% if parsed_result.improvements %}
+
+                <ul class="insight-list warning-list">
+
+                    {% for improvement in parsed_result.improvements %}
+
+                        <li>
+                            {{ improvement }}
+                        </li>
+
+                    {% endfor %}
+
+                </ul>
+
+            {% else %}
+
+                <p class="empty-insight">
+                    No specific improvements detected.
+                </p>
+
+            {% endif %}
+
+        </article>
+
+
+        <!-- RECOMMENDED SKILLS -->
+
+        <article class="career-card">
+
+            <div class="career-card-heading">
+
+                <div class="career-card-icon warning-icon">
+                    ⚡
+                </div>
+
+                <div>
+
+                    <h3>
+                        Skills to Consider
+                    </h3>
+
+                    <p>
+                        Recommendations — not claimed skills
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            {% if parsed_result.missing_skills %}
+
+                <div class="recommendation-chip-list">
+
+                    {% for skill in parsed_result.missing_skills %}
+
+                        <span class="recommendation-chip">
+                            + {{ skill }}
+                        </span>
+
+                    {% endfor %}
+
+                </div>
+
+            {% else %}
+
+                <p class="empty-insight">
+                    No additional skill recommendations found.
+                </p>
+
+            {% endif %}
+
+        </article>
+
+    </section>
+
+
+    <!-- =====================================================
+         DETECTED SKILLS
+    ====================================================== -->
+
+    <section class="result-section-card">
+
+        <div class="section-card-heading">
+
+
+            <div class="section-heading-left">
+
+                <div class="section-card-icon">
+                    🧠
+                </div>
+
+                <div>
+
+                    <h2>
+                        Detected Skills
+                    </h2>
+
+                    <p>
+                        Skills found directly in your resume
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <span class="section-count">
+                {{ skills|length if skills else 0 }}
+            </span>
+
+        </div>
+
+
+        {% if skills %}
+
+            <div class="detected-skill-grid">
+
+                {% for skill in skills %}
+
+                    <span class="detected-skill-chip">
+
+                        <span>
+                            ✓
+                        </span>
+
+                        {{ skill }}
+
+                    </span>
+
+                {% endfor %}
+
+            </div>
+
+        {% else %}
+
+            <p class="empty-insight">
+                No skills detected.
+            </p>
+
+        {% endif %}
+
+    </section>
+
+
+    <!-- =====================================================
+         TOOLS
+    ====================================================== -->
+
+    {% if parsed_result.tools or tools %}
+
+        <section class="result-section-card">
+
+            <div class="section-card-heading">
+
+                <div class="section-heading-left">
+
+                    <div class="section-card-icon">
+                        🛠️
+                    </div>
+
+                    <div>
+
+                        <h2>
+                            Tools & Technologies
+                        </h2>
+
+                        <p>
+                            Software, equipment and professional tools
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="tool-chip-grid">
+
+                {% if parsed_result.tools %}
+
+                    {% for tool in parsed_result.tools %}
+
+                        <span class="tool-chip">
+                            {{ tool }}
+                        </span>
+
+                    {% endfor %}
+
+                {% else %}
+
+                    {% for tool in tools %}
+
+                        <span class="tool-chip">
+                            {{ tool }}
+                        </span>
+
+                    {% endfor %}
+
+                {% endif %}
+
+            </div>
+
+        </section>
+
+    {% endif %}
+
+
+    <!-- =====================================================
+         AI RECOMMENDATION
+    ====================================================== -->
+
+    <section class="ai-recommendation-card">
+
+        <div class="recommendation-icon">
+            🚀
+        </div>
+
+
+        <div>
+
+            <span class="recommendation-label">
+                CVanta AI Recommendation
+            </span>
+
+            <h2>
+                Your Next Career Step
+            </h2>
+
+            <p>
+
+                {% if parsed_result.recommendation %}
+
+                    {{ parsed_result.recommendation }}
+
+                {% elif parsed_result.career_fit_explanation %}
+
+                    {{ parsed_result.career_fit_explanation }}
+
+                {% else %}
+
+                    Continue strengthening the skills and
+                    practical experience most relevant to
+                    your target career role.
+
+                {% endif %}
+
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         COMPLETE AI DETAILS
+    ====================================================== -->
+
+    <details class="full-analysis-details">
+
+        <summary>
+            View Complete AI Analysis
+        </summary>
+
+        <div class="full-analysis-content">
+            {{ ai_analysis }}
+        </div>
+
+    </details>
+
+
+    <!-- =====================================================
+         ACTIONS
+    ====================================================== -->
+
+    <div class="result-bottom-actions">
+
+        <a
+            href="/"
+            class="secondary-result-btn"
+        >
+            ← Analyze Another Resume
+        </a>
+
+        <a
+            href="/resume-builder"
+            class="primary-result-btn"
+        >
+            ✨ Build My Resume
+        </a>
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     SCORE BAR SCRIPT
+===================================================== -->
+
+<script>
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function () {
+
+        const scoreBar =
+            document.getElementById(
+                "careerScoreBar"
+            );
+
+
+        if (!scoreBar) {
+            return;
+        }
+
+
+        let score =
+            parseInt(
+                scoreBar.dataset.score,
+                10
+            ) || 0;
+
+
+        score =
+            Math.max(
+                0,
+                Math.min(
+                    score,
+                    100
+                )
+            );
+
+
+        scoreBar.style.width =
+            score + "%";
+
+    }
+);
+
+</script>
+
+
+</body>
+</html>
